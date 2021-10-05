@@ -1,4 +1,3 @@
-// TODO Create a connected component to render a fetched recipe
 import React, { Component } from "react"
 import { connect } from "react-redux"
 import { bindActionCreators } from "redux"

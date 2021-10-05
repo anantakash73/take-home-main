@@ -32,7 +32,6 @@ export const executeRecipe = async(id) => {
     return searchResults
 }
 
-// TODO: fix action
 export const findRecipe = (id) => {
     store.dispatch(fetchingRecipe())
     executeRecipe(id)

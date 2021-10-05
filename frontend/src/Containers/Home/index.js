@@ -93,13 +93,7 @@ class Home extends Component {
           </List>
         )}
         <Divider />
-        {/*
-          TODO: Add a recipe component here.
-          I'm expecting you to have it return null or a component based on the redux state, not passing any props from here
-          I want to see how you wire up a component with connect and build actions.
-        */
-        recipe ? (<Recipe />) : null
-        
+        {recipe ? (<Recipe />) : null
         }
       </HomeWrapper>
     )

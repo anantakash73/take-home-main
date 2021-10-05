@@ -5,15 +5,15 @@ const initialState = {
     error: null,
 }
 
-const searchFetching = (state) => {
+const recipeFetching = (state) => {
     return {...state, isLoading: true }
 }
 
-const searchFetched = (state, payload) => {
+const recipeFetched = (state, payload) => {
     return {...state, isLoading: false, recipe: payload }
 }
 
-const searchFailed = (state, payload) => {
+const recipeFailed = (state, payload) => {
     return {...state, isLoading: false, error: payload }
 }
 
@@ -24,11 +24,11 @@ const clearRecipe = (state) => {
 export default (state = initialState, { type, payload }) => {
     switch (type) {
         case GET_RECIPE:
-            return searchFetching()
+            return recipeFetching()
         case RECEIVE_RECIPE:
-            return searchFetched(state, payload)
+            return recipeFetched(state, payload)
         case FAIL_RECIPE:
-            return searchFailed(state, payload)
+            return recipeFailed(state, payload)
         case CLEAR_RECIPE:
             return clearRecipe()
         default:
