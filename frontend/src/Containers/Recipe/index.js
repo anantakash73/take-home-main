@@ -11,12 +11,11 @@ class Recipe extends Component {
         super(props)
     }
     fetchRecipe(id) {
-        actions.findRecipe(id)
+        this.props.findRecipe(id)
     }
 
     render() {
         const { recipe } = this.props
-        console.log(recipe)
         return (
             <div>
                 <h3>Recipe for {recipe.name}</h3>

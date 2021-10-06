@@ -33,15 +33,21 @@ export const executeRecipe = async(id) => {
 }
 
 export const findRecipe = (id) => {
-    store.dispatch(fetchingRecipe())
-    executeRecipe(id)
-        .then((res) => {
-            store.dispatch(fetchedRecipe(res))
-        })
-        .catch((err) => store.dispatch(failedRecipe(err)))
+    return (dispatch) => {
+        dispatch(fetchingRecipe())
+        return executeRecipe(id)
+            .then((res) => {
+                dispatch(fetchedRecipe(res))
+            })
+            .catch((err) => dispatch(failedRecipe(err)))
+    }
+
 
 }
 
 export const clearRecipe = () => {
-    store.dispatch(clearingRecipe())
+    return (dispatch) => {
+        dispatch(clearingRecipe())
+        return;
+    }
 }

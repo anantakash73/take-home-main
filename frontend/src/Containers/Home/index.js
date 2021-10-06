@@ -31,12 +31,12 @@ class Home extends Component {
   fetchSearch() {
     // TODO: something is missing here for fetching
     const {term, ingredients} = this.state
-    actions.clearRecipe()
-    actions.searchRecipes(term, ingredients)
+    this.props.clearRecipe()
+    this.props.searchRecipes(term, ingredients)
     
   }
   fetchRecipe(id) {
-    actions.findRecipe(id)
+    this.props.findRecipe(id)
   }
   handleSearch(event) {
     const term = event.target.value
@@ -54,7 +54,8 @@ class Home extends Component {
   }
   render() {
     const { term, ingredients } = this.state
-    const { recipes, isLoading, recipe } = this.props
+    const { recipes, isLoading, recipe, error } = this.props
+    console.log(this.props);
     return (
       <HomeWrapper>
         <Input
@@ -82,7 +83,7 @@ class Home extends Component {
         <Button onClick={this.fetchSearch}>search</Button>
         <Divider />
         {isLoading && <LinearProgress />}
-
+        {error && <p>Error occured {error}</p>}
         {recipes && (
           <List>
             {recipes.map((recipe) => (
@@ -110,6 +111,7 @@ const mapDispatchToProps = (dispatch) =>
     {
       searchRecipes: actions.searchRecipes,
       findRecipe: actions.findRecipe,
+      clearRecipe: actions.clearRecipe,
     },
     dispatch
   )

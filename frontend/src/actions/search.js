@@ -1,6 +1,3 @@
-import store from "../index"
-
-
 export const GET_SEARCH = "GET_SEARCH"
 export const RECEIVE_SEARCH = "RECEIVE_SEARCH"
 export const FAIL_SEARCH = "FAIL_SEARCH"
@@ -33,11 +30,13 @@ export const executeSearch = async(name, ingredients) => {
 
 // TODO: fix action
 export const searchRecipes = (name, ingredients) => {
-    store.dispatch(fetchingSearch())
-    executeSearch(name, ingredients)
-        .then((res) => {
-            store.dispatch(fetchedSearch(res))
-        })
-        .catch((err) => store.dispatch(failedSearch(err)))
+    return (dispatch) => {
+        dispatch(fetchingSearch())
+        return executeSearch(name, ingredients)
+            .then((res) => {
+                dispatch(fetchedSearch(res))
+            })
+            .catch((err) => dispatch(failedSearch(err)))
+    }
 
 }

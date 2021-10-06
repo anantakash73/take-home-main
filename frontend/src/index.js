@@ -10,15 +10,17 @@ import * as storage from 'redux-storage'
 import createEngine from 'redux-storage-engine-localstorage'
 
 const engine = createEngine('my-save-key')
-const middleware = storage.createMiddleware(engine);
+const middleware = storage.createMiddleware(engine)
 const reducer = storage.reducer(reducers)
 
 const store = createStore(reducer, applyMiddleware(thunkMiddleware, middleware))
 
-const load = storage.createLoader(engine);
+const load = storage.createLoader(engine)
 load(store)
-  .then((newState) => console.log('Loaded state', newState))
-  .catch(() => console.log('Failed to load previous state'))
+  .then((newState) => console.log('Loaded state', newStat))
+  .catch((err) => {
+    console.error('Failed to load previous state', err);
+  })
 
 const WrappedHome = () => (
   <Provider store={store}>
