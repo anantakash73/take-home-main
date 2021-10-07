@@ -17,9 +17,9 @@ const store = createStore(reducer, applyMiddleware(thunkMiddleware, middleware))
 
 const load = storage.createLoader(engine)
 load(store)
-  .then((newState) => console.log('Loaded state', newStat))
+  .then((newState) => console.log('Loaded state', newState))
   .catch((err) => {
-    console.error('Failed to load previous state', err);
+    console.error('Failed to load previous state', err)
   })
 
 const WrappedHome = () => (

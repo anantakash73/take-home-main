@@ -1,5 +1,3 @@
-import store from "../index"
-
 export const GET_RECIPE = "GET_RECIPE"
 export const RECEIVE_RECIPE = "RECEIVE_RECIPE"
 export const FAIL_RECIPE = "FAIL_RECIPE"
@@ -48,6 +46,6 @@ export const findRecipe = (id) => {
 export const clearRecipe = () => {
     return (dispatch) => {
         dispatch(clearingRecipe())
-        return;
+        return
     }
 }
